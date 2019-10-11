@@ -21,6 +21,7 @@
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
+    "lint-staged": "^9.4.2",
     "babel-plugin-named-asset-import": "^0.3.4",
     "babel-preset-react-app": "^9.0.2",
     "camelcase": "^5.2.0",
@@ -77,8 +78,12 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "pre-commit": "tsc --noEmit && lint-staged",
     "lint:fix": "eslint './src/**/*.{ts,tsx}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [
