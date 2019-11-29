@@ -1,20 +1,23 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
-import './style/App.css';
+import store from './store';
+import AsyncComponent from './components/asyncComp/AsyncComponent';
+
+const Home = AsyncComponent(() => import('./pages/home'));
+const About = AsyncComponent(() => import('./pages/about'));
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={require('./assets/logo.svg')} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store({})}>
+      <HashRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={About} />
+        </Switch>
+      </HashRouter>
+    </Provider>
   );
 };
 
