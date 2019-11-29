@@ -1,12 +1,19 @@
 import React from 'react';
-// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { increment, decrement, reset } from '../../actions/index';
 import * as ActionTypes from '../../actions/actionTypes';
+import { IProps } from '../../components/types';
 
-export function About(props: any) {
+export interface IAboutProps extends IProps {
+  counter: number;
+}
+
+export function About(props: IAboutProps) {
   const { dispatch } = props;
+
+  const change = () => dispatch({ type: ActionTypes.CHANGE, payload: { amount: 2 } });
+
   return (
     <div className="app">
       <header className="app-header">
@@ -16,19 +23,13 @@ export function About(props: any) {
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
       <button onClick={() => dispatch(reset())}>R</button>
-      <button onClick={() => dispatch({ type: ActionTypes.CHANGE, payload: { amount: 2 } })}>Change</button>
+      <button onClick={change}>Change</button>
     </div>
   );
 }
 
-const mapStateToProps = (state: any, ownProps: any) => {
+const mapStateToProps = (state: any, ownProps: IAboutProps) => {
   return state.main;
 };
-/* const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return { actions: bindActionCreators({ increment, decrement, reset }, dispatch) };
-}; */
 
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps,
-)(About);
+export default connect(mapStateToProps)(About);
