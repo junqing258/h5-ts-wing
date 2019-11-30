@@ -19,6 +19,9 @@
     "noEmit": true,
     "jsx": "preserve"
   },
+  "files":[
+		"src/libs/react-app-env.d.ts",
+	],
   "include": [
     "src/**/*"
   ]
