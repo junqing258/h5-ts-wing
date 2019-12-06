@@ -1,6 +1,7 @@
 node_modules/**
 dist/**
 bin/**
+build/**
 src/serviceWorker.ts
 src/**/__tests__/**
 *.d.ts

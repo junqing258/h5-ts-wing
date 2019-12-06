@@ -18,7 +18,6 @@ export function About(props: IAboutProps) {
     <div className="app">
       <header className="app-header">
         <p>About {props.counter} and save to reload.</p>
-        <p> {props.location.search} </p>
       </header>
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>

@@ -2,16 +2,16 @@ import React from 'react';
 
 type ICompProps = {};
 type ICompState = {
-  readonly Component?: keyof JSX.IntrinsicElements | any;
+  readonly Component?: keyof JSX.IntrinsicElements | null;
 };
 
-const AsyncComponent = (loadComponent: Function, loaddingComponent: any = null) =>
+const AsyncComponent = (loadComponent: Function, loaddingComponent: React.ReactNode = null) =>
   class AsyncComponent extends React.Component<ICompProps, ICompState> {
     state: ICompState = {
       Component: null,
     };
 
-    public componentWillMount() {
+    public componentDidMount() {
       if (this.hasLoadedComponent()) {
         return;
       }
@@ -21,7 +21,7 @@ const AsyncComponent = (loadComponent: Function, loaddingComponent: any = null) 
         .then((Component: any) => {
           this.setState({ Component });
         })
-        .catch((err: any) => {
+        .catch((err: Error) => {
           console.error(`Cannot load component in <AsyncComponent />`);
           throw err;
         });
