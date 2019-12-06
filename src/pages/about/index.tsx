@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './style.scss';
+
 import { increment, decrement, reset } from '../../actions/index';
 import * as ActionTypes from '../../actions/actionTypes';
 import { IProps } from '../../components/types';
@@ -15,10 +17,9 @@ export function About(props: IAboutProps) {
   const change = () => dispatch({ type: ActionTypes.CHANGE, payload: { amount: 2 } });
 
   return (
-    <div className="app">
+    <div className="page-about">
       <header className="app-header">
         <p>About {props.counter} and save to reload.</p>
-        <p> {props.location.search} </p>
       </header>
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>

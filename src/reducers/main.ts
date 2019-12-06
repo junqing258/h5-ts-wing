@@ -1,6 +1,4 @@
-import { createActions, handleActions, combineActions } from 'redux-actions';
-
-import { increment, decrement, reset } from '../actions/index';
+import { handleActions } from 'redux-actions';
 
 import * as ActionType from '../actions/actionTypes';
 
